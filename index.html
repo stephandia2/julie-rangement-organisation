@@ -275,7 +275,7 @@
     <nav>
         <ul>
             <li><a href="#tips">Conseils</a></li>
-            <li><a href="#editor"> Éditeur de Julie</a></li>
+            <li><a href="#editor"> ✏️ Édito de Julie</a></li>
             <li><a href="#checklists">Listes</a></li>
             <li><a href="#notes">Notes</a></li>
         </ul>
@@ -313,9 +313,9 @@
             </div>
         </section>
 
-        <!-- Éditeur pour Julie -->
+        <!-- Édito pour Julie -->
         <section id="editor">
-            <h2>✏️ Éditeur de Julie</h2>
+            <h2>✏️ Édito de Julie</h2>
             <p>Écris, formate et sauvegarde tes listes et notes ici.</p>
             
             <div class="editor-container" style="margin-top: 1rem;">
@@ -329,8 +329,10 @@
                 </div>
                 <div id="editor" contenteditable="true" style="min-height: 300px; background: white; padding: 1rem;">
                     <p>Bonjour Julie ! 👋</p>
-                    <p>C'est ici que tu peux écrire tout ce que tu veux...</p>
-                    <p>Tes listes, tes idées, tes pensées...</p>
+                    <p><i>"Le désordre n'est pas le contraire de l'ordre, c'est simplement l'absence d'organisation."</i></p>
+                    <p>Toi qui es une vraie maniaque du rangement 💪, ce site est ton sanctuary !</p>
+                    <p>Ici, tout a sa place, même tes pensées...</p>
+                    <p>Bienvenue dans ton temple de l'ordre ! 🏛️✨</p>
                 </div>
                 <div class="editor-actions">
                     <button class="btn btn-primary" onclick="saveContent()">💾 Sauvegarder</button>
@@ -395,7 +397,7 @@
             document.getElementById('editor').focus();
         }
 
-        // Effacer l'éditeur
+        // Effacer l'édito
         function clearEditor() {
             document.getElementById('editor').innerHTML = '<p>Bonjour Julie ! 👋</p><p>C\'est ici que tu peux écrire tout ce que tu veux...</p>';
         }
