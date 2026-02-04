@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangement & Organisation - Julie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6B5B95;
+            --secondary: #88B04B;
+            --accent: #F7CAC9;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #8E7CC3);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tip-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tip-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Editor for Julie */
+        .editor-container {
+            background: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .editor-toolbar {
+            background: #34495E;
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .editor-toolbar button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .editor-toolbar button:hover {
+            background: var(--secondary);
+        }
+
+        #editor {
+            width: 100%;
+            min-height: 400px;
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            border: none;
+            resize: vertical;
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .editor-actions {
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .checklists {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .checklist {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .checklist h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .notes-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏠 Rangement & Organisation</h1>
+        <p>Pour un espace de vie harmonieux et serein</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#tips">Conseils</a></li>
+            <li><a href="#editor"> Éditeur de Julie</a></li>
+            <li><a href="#checklists">Listes</a></li>
+            <li><a href="#notes">Notes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Section Conseils -->
+        <section id="tips">
+            <h2>💡 Conseils d'Organisation</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>🗂️ Méthode des 4 Boîtes</h3>
+                    <p>Divisez vos objets en 4 catégories : garder, donner, jeter, relocate/ranger ailleurs.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>📦 Règle du 1 an</h3>
+                    <p>Si vous n'avez pas utilisé un objet depuis 1 an, c'est probablement que vous n'en avez pas besoin.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>🏷️ Étiquetez Tout</h3>
+                    <p>Des étiquettes claires vous feront gagner du temps au quotidien.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>📍 Place Attitrée</h3>
+                    <p>Chaque objet doit avoir sa place. Après utilisation, remettez-le systématiquement.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>🧹 Routine Quotidienne</h3>
+                    <p>10 minutes par jour pour ranger maintiennent l'ordre facilement.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>🛒 Entrée/Sortie</h3>
+                    <p>Un panier à l'entrée pour les affaires à ranger en rentrant.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Éditeur pour Julie -->
+        <section id="editor">
+            <h2>✏️ Éditeur de Julie</h2>
+            <p>Écris, formate et sauvegarde tes listes et notes ici.</p>
+            
+            <div class="editor-container" style="margin-top: 1rem;">
+                <div class="editor-toolbar">
+                    <button onclick="formatText('bold')"><b>G</b></button>
+                    <button onclick="formatText('italic')"><i>I</i></button>
+                    <button onclick="formatText('underline')"><u>S</u></button>
+                    <button onclick="formatText('insertUnorderedList')">• Liste</button>
+                    <button onclick="formatText('insertOrderedList')">1. Liste</button>
+                    <button onclick="clearEditor()">🗑️ Effacer</button>
+                </div>
+                <div id="editor" contenteditable="true" style="min-height: 300px; background: white; padding: 1rem;">
+                    <p>Bonjour Julie ! 👋</p>
+                    <p>C'est ici que tu peux écrire tout ce que tu veux...</p>
+                    <p>Tes listes, tes idées, tes pensées...</p>
+                </div>
+                <div class="editor-actions">
+                    <button class="btn btn-primary" onclick="saveContent()">💾 Sauvegarder</button>
+                    <button class="btn btn-secondary" onclick="exportContent()">📤 Exporter</button>
+                    <button class="btn" style="background: var(--accent);" onclick="loadContent()">📥 Charger</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Listes de Contrôle -->
+        <section id="checklists">
+            <h2>✅ Listes de Contrôle</h2>
+            <div class="checklists">
+                <div class="checklist">
+                    <h3>🧹 Nettoyage Hebdomadaire</h3>
+                    <label><input type="checkbox"> Aspirer toutes les pièces</label>
+                    <label><input type="checkbox"> Laver les sols</label>
+                    <label><input type="checkbox"> Nettoyer les surfaces</label>
+                    <label><input type="checkbox"> Changer les draps</label>
+                    <label><input type="checkbox"> Vider les poubelles</label>
+                </div>
+                <div class="checklist">
+                    <h3>🗄️ Rangement Mensuel</h3>
+                    <label><input type="checkbox"> Trier les vêtements</label>
+                    <label><input type="checkbox"> Vérifier les dates des aliments</label>
+                    <label><input type="checkbox"> Organiser les tiroirs</label>
+                    <label><input type="checkbox"> Désencombrer les étagères</label>
+                    <label><input type="checkbox"> Ranger le garage/grenier</label>
+                </div>
+                <div class="checklist">
+                    <h3>📦 Déménagement/Débarras</h3>
+                    <label><input type="checkbox">photo des objets</label>
+                    <label><input type="checkbox"> Catégorie : garder</label>
+                    <label><input type="checkbox"> Catégorie : donner</label>
+                    <label><input type="checkbox"> Catégorie : vendre</label>
+                    <label><input type="checkbox"> Catégorie : jeter</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section id="notes">
+            <h2>📝 Notes Rapides</h2>
+            <p>Un espace pour tes pensées du moment...</p>
+            <textarea class="notes-area" id="quickNotes" placeholder="Écris ici tes notes, idées, rappels..."></textarea>
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-primary" onclick="saveNotes()">💾 Sauvegarder</button>
+                <button class="btn btn-secondary" onclick="clearNotes()">🗑️ Effacer</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>🍃 "L'ordre est la première étape de la liberté"</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">Créé avec ❤️ pour Julie</p>
+    </footer>
+
+    <script>
+        // Formatage du texte
+        function formatText(command) {
+            document.execCommand(command, false, null);
+            document.getElementById('editor').focus();
+        }
+
+        // Effacer l'éditeur
+        function clearEditor() {
+            document.getElementById('editor').innerHTML = '<p>Bonjour Julie ! 👋</p><p>C\'est ici que tu peux écrire tout ce que tu veux...</p>';
+        }
+
+        // Sauvegarder le contenu
+        function saveContent() {
+            const content = document.getElementById('editor').innerHTML;
+            localStorage.setItem('julieEditorContent', content);
+            alert('💾 Contenu sauvegardé !');
+        }
+
+        // Charger le contenu
+        function loadContent() {
+            const content = localStorage.getItem('julieEditorContent');
+            if (content) {
+                document.getElementById('editor').innerHTML = content;
+            } else {
+                alert('Aucune sauvegarde trouvée.');
+            }
+        }
+
+        // Exporter le contenu
+        function exportContent() {
+            const content = document.getElementById('editor').innerText;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'julie-notes.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Sauvegarder les notes rapides
+        function saveNotes() {
+            const notes = document.getElementById('quickNotes').value;
+            localStorage.setItem('julieQuickNotes', notes);
+            alert('💾 Notes sauvegardées !');
+        }
+
+        // Charger les notes rapides
+        window.onload = function() {
+            const notes = localStorage.getItem('julieQuickNotes');
+            if (notes) {
+                document.getElementById('quickNotes').value = notes;
+            }
+            const content = localStorage.getItem('julieEditorContent');
+            if (content) {
+                document.getElementById('editor').innerHTML = content;
+            }
+        };
+
+        // Effacer les notes
+        function clearNotes() {
+            if (confirm('Effacer toutes les notes ?')) {
+                document.getElementById('quickNotes').value = '';
+                localStorage.removeItem('julieQuickNotes');
+            }
+        }
+
+        // Navigation fluide
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
