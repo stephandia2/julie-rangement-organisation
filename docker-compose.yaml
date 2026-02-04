@@ -2,15 +2,8 @@ version: '3.8'
 
 services:
   web:
-    image: nginx:alpine
+    build: .
     container_name: julie-rangement-organisation
     ports:
       - "8125:80"
     restart: unless-stopped
-    volumes:
-      - ./:/usr/share/nginx/html:ro
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
